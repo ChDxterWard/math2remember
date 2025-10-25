@@ -1,4 +1,5 @@
-from isPrime import isPrime 
+#from isPrime import isPrime 
+from .isPrime import isPrime
 def getPrimeGenFrom(n):
     while True:
         if isPrime(n):
@@ -21,3 +22,6 @@ def sieve(n):
         
 def getPrimeGenTo(n):
     return sieve(n)
+
+if __name__ == '__main__':
+    print(isPrime(1))

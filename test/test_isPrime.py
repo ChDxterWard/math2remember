@@ -1,6 +1,6 @@
 import sys
-sys.path.append('../src')
-from isPrime import isPrime
+sys.path.append('../math2remember')
+from math2remember.isPrime import isPrime
 
 def testIsPrime():
     assert isPrime(0)==False
