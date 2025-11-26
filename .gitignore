@@ -209,3 +209,7 @@ __marimo__/
 
 build.sh
 .env
+
+bin/
+lib64
+*.cfg
