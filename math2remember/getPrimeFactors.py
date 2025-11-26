@@ -1,5 +1,5 @@
 from .isPrime import isPrime
-from .getPrimeGen import getPrimeGenTo
+from .getPrimeGen import getPrimeGenFrom
 
 def getPrimeFactors(n):
     '''
@@ -20,8 +20,9 @@ def getPrimeFactors(n):
     
     if isPrime(n):
         return {str(n):1}
+    
     ret = {}
-    primes = getPrimeGenTo(n)
+    primes = getPrimeGenFrom(2)
     for prime in primes:
         while n%prime==0:
 
@@ -30,6 +31,9 @@ def getPrimeFactors(n):
             except KeyError:
                 ret[str(prime)] = 1 
             
-            n /= prime # n = int(n/prime)
+            n //= prime # n = int(n/prime)
+            
+            if n == 1:
+                return ret
             
     return ret
