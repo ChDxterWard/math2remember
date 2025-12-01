@@ -10,8 +10,10 @@ def isPrime(n):
         True if n is a prime number False otherwise.
     '''
     
-    # 2 is the smallest prime number
-    if n < 2:
+    if n == 2:
+        return True
+    # 2 is the smallest prime number and every even number except from 2 is not prime.
+    if n<2 or n%2:
         return False
     # We test from 2 to √n.
     # We only need to test to √n because we have two options:
