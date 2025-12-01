@@ -1,13 +1,21 @@
 import sys
 sys.path.append('../math2remember')
-from math2remember.getPrimeGen import sieve
+from math2remember.getPrimeGen import sieve, getPrimeGenFromBruteForce, getPrimeGen
 
-# def testGetPrimeGenFrom():
-#     g = getPrimeGenFrom(-2)
-#     assert next(g) == 2
-#     assert next(g) == 3
-#     assert next(g) == 5
-#     assert next(g) == 7
+def testGetPrimeGenFrom():
+    g = getPrimeGenFromBruteForce(-2)
+    assert next(g) == 2
+    assert next(g) == 3
+    assert next(g) == 5
+    assert next(g) == 7
+
+def testGetPrimeGenFrom():
+    g = getPrimeGen()
+    assert next(g) == 2
+    assert next(g) == 3
+    assert next(g) == 5
+    assert next(g) == 7
+    assert next(g) == 11
     
 def testGetPrimeGenTo():
     # assert [2]==getPrimeGenTo(2)
