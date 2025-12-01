@@ -1,9 +1,4 @@
 from .isPrime import isPrime
-
-def getPrimeGenFrom(n):
-    
-    pass
-
 def getPrimeGenFromBruteForce(n):
     '''
     Checks every number starting from n if it is a prime number.
@@ -20,6 +15,18 @@ def getPrimeGenFromBruteForce(n):
             yield n
         n += 1
 
+'''
+a = m*q+r
+a = 6*q+r with r ∈ [0,1,2,3,4,5]
+a0 = 6*q+0 ... 6 | a0 -> not prime
+a1 = 6*q+1 ... maybe prime
+a2 = 6*q+2 ... 2 | a2 -> not prime
+a3 = 6*q+3 ... 3 | a3 -> not prime
+a4 = 6*q+4 ... 2 | a4 -> not prime
+a5 = 6*q+5 ≡ 6*q-1 ... maybe prime
+
+as we take m=6=2*3 we exclude all pultiples of 2 and 3 as prime candidates.
+'''
 def getPrimeGen():
     yield 2
     yield 3
@@ -81,6 +88,3 @@ def sieve(ceil):
         prime += 1
         
     return [idx for idx in range(2, ceil+1) if maybePrimes[idx]]
-
-if __name__ == '__main__':
-    print(sieve(14))
