@@ -1,5 +1,5 @@
 from .isPrime import isPrime
-from .getPrimeGen import getPrimeGenFrom
+from .getPrimeGen import getPrimeGenFromBruteForce
 
 def getPrimeFactors(n):
     '''
@@ -22,7 +22,7 @@ def getPrimeFactors(n):
         return {str(n):1}
     
     ret = {}
-    primes = getPrimeGenFrom(2)
+    primes = getPrimeGenFromBruteForce(2)
     for prime in primes:
         while n%prime==0:
 

@@ -1,12 +1,50 @@
-#from isPrime import isPrime 
 from .isPrime import isPrime
+
 def getPrimeGenFrom(n):
+    
+    pass
+
+def getPrimeGenFromBruteForce(n):
+    '''
+    Checks every number starting from n if it is a prime number.
+    If so it is returned.
+    
+    Args:
+        n: The starting number. It only make sense to start with n=2 (n∈ℤ)
+        
+    Returns:
+        The next prime number.
+    '''
     while True:
         if isPrime(n):
             yield n
         n += 1
 
+def getPrimeGen():
+    yield 2
+    yield 3
+    q = 1
+    while True:
+        candidate1 = 6*q-1
+        if isPrime(candidate1):
+            yield candidate1
+        candidate2 = 6*q+1
+        if isPrime(candidate2):
+            yield candidate2
+        q += 1
+
 def sieve(ceil):
+    '''
+    Create prime numbers with the upper bound of ceil (inclusive).
+    
+    Args:
+        ceil: Positive integer (> 1)
+        
+    Returns:
+        A list of prime numbers [2,3,...] where the last prime is ceil 
+        (if ceil is a prime number)  or the the last prime number before 
+        ceil.
+    '''
     if ceil < 2:
         return []
     # Create an array from 0 to ceil+1. Init all with true.
@@ -24,10 +62,8 @@ def sieve(ceil):
     # discovered q and its multiplies allready because q<=a<=ceil**.5.
     # So we discovered q and its multiples that are a and therefore m.
     # If all primes <= ceil**.5 are discovered all combined numbers 
+    # are also discovered.
     while prime <= ceil**.5:
-    #while prime*prime <= ceil:
-        # If maybePrimes[prime] is true it was not marked as an multiply
-        # of another number -> prime!
         if maybePrimes[prime]:
             # Now we know the current prime number.
             # In the next step we have to mark the multiplies of that number 
@@ -45,9 +81,6 @@ def sieve(ceil):
         prime += 1
         
     return [idx for idx in range(2, ceil+1) if maybePrimes[idx]]
-
-def getPrimeGenTo(n):
-    return sieve(n)
 
 if __name__ == '__main__':
     print(sieve(14))
