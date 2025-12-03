@@ -1,7 +1,5 @@
 import math
 def extendedEuclidian(a, b):
-    if b == 0:
-        return a, 1, 0
     '''
     Compute the extended euclidian algorithm.
     
@@ -38,6 +36,9 @@ def extendedEuclidian(a, b):
         =x1*n*d+y1*m*d-y1*q*n*d=d*(x1*n+y1*m-y1*q*n)
         -> d | gcd(b,a%b)
     '''
+    if b == 0:
+        return a, 1, 0
+    
     gcd, x1, y1 = extendedEuclidian(b, a%b)
     '''
     We come back from the previous function call.
@@ -50,5 +51,9 @@ def extendedEuclidian(a, b):
         -> x = y1 & y = (x1-y1*q) with q = floor(a/b)
     '''
     x = y1
-    y = x1 - y1*math.floor(a/b)
+    y = x1 - y1*(a//b)
     return gcd, x, y
+
+def isCoprime(a,b):
+    gcd, _, _ = extendedEuclidian(a,b)
+    return gcd == 1
